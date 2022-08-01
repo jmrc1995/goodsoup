@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/goodsoup/static/css/main.02b3b2df.css",
-    "main.js": "/goodsoup/static/js/main.e78de4e9.js",
+    "main.js": "/goodsoup/static/js/main.4f09860c.js",
     "index.html": "/goodsoup/index.html",
     "main.02b3b2df.css.map": "/goodsoup/static/css/main.02b3b2df.css.map",
-    "main.e78de4e9.js.map": "/goodsoup/static/js/main.e78de4e9.js.map"
+    "main.4f09860c.js.map": "/goodsoup/static/js/main.4f09860c.js.map"
   },
   "entrypoints": [
     "static/css/main.02b3b2df.css",
-    "static/js/main.e78de4e9.js"
+    "static/js/main.4f09860c.js"
   ]
 }
