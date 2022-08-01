@@ -29,7 +29,7 @@ function Artists({ topArtists, setTopArtists, token }) {
         }
       );
       setTopArtists(data.items);
-      console.log(data.items);
+      // console.log(data.items);
     };
 
     myArtists();
