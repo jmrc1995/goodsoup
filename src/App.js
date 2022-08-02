@@ -3,19 +3,16 @@ import { loginUrl } from "./spotify";
 import { useEffect, useState } from "react";
 import Artists from "./components/Artists";
 import Banner from "./components/Banner";
+import Profile from "./components/Profile";
 
 function App() {
-
-
-
   const [token, setToken] = useState("");
   const [topArtists, setTopArtists] = useState([]);
 
   useEffect(() => {
     const hash = window.location.hash;
-    console.log(window.location.hash)
+
     let token = window.localStorage.getItem("token");
-    console.log(window.localStorage)
 
     if (!token && hash) {
       token = hash
@@ -23,64 +20,63 @@ function App() {
         .split("&")
         .find((elem) => elem.startsWith("access_token"))
         .split("=")[1];
-
       window.location.hash = "";
       window.localStorage.setItem("token", token);
     }
 
     setToken(token);
+    console.log(token);
   }, []);
 
   const logout = () => {
-    
-    if(token){
-      setToken('')
+    if (token) {
+      setToken("");
     }
-
     window.localStorage.removeItem("token");
-    window.location.hash="";
+    window.location.hash = "";
     setTopArtists([]);
-    console.log(token)
+    console.log(token);
   };
 
-
   return (
-   
-      <div className="h-screen bg-navyBlue text-center">
-        <header className="flex justify-end text-white">
-          {/* <h1 className="font-montserrat text-2xl font-bold ">Login to see your top 20</h1> */}
-          {!token ? (
-            <a
-              className="text-sm font-bold m-2 rounded border p-2"
-              href={!token&&loginUrl}
-            >
-              Login to Spotify
-            </a>
-          ) : (
+    <div className="h-screen bg-navyBlue text-center">
+      <header className="flex items-center justify-between text-white">
+        {!token ? (
+          <a
+            className="text-sm h-3/6 font-bold m-10 rounded border p-2"
+            href={loginUrl}
+          >
+            Login to Spotify
+          </a>
+        ) : (
+          <>
+            <Profile className="flex flex-start w-full" token={token} />
+
             <button
-              className="text-sm font-bold m-2 rounded border p-2"
+              className="text-sm h-3/6 font-bold m-10 rounded border p-2"
               onClick={logout}
             >
               Logout
             </button>
-          )}
-        </header>
-        <div className="bg-navyBlue">
-
+          </>
+        )}
+      </header>
+      <div className="bg-navyBlue">
         <Banner />
-          {token ? (
-            <Artists
-              topArtists={topArtists}
-              setTopArtists={setTopArtists}
-              token={token}
-            />
-          ) : null}
-
-        
-        </div>
-
+        {token ? (
+          <Artists
+            topArtists={topArtists}
+            setTopArtists={setTopArtists}
+            token={token}
+          />
+        ) : (
+          <h1 className="text-white font-montserrat flex flex-start m-10">
+            {" "}
+            Please Sign In ...{" "}
+          </h1>
+        )}
       </div>
-
+    </div>
   );
 }
 

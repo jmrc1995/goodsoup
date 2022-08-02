@@ -20,6 +20,7 @@ function Artists({ topArtists, setTopArtists, token }) {
 
   useEffect(() => {
     const myArtists = async () => {
+      console.log(token)
       const { data } = await axios.get(
         "https://api.spotify.com/v1/me/top/tracks",
         {
@@ -29,17 +30,21 @@ function Artists({ topArtists, setTopArtists, token }) {
         }
       );
       setTopArtists(data.items);
-      // console.log(data.items);
+      console.log(data)
+    
     };
-
+   
     myArtists();
-    console.log(myArtists());
   }, []);
+
+
 
 
   return (
     <>
-      {topArtists.length > 0 && (
+   
+    
+      {topArtists.length > 0 ? (
         <>
           <animated.h1
             style={props}
@@ -100,7 +105,9 @@ function Artists({ topArtists, setTopArtists, token }) {
             ))}
           </div>
         </>
-      )}
+      ):<h1 className="text-white font-montserrat flex flex-start m-10">
+        Sorry, you are not authorized to access this application
+      </h1>}
     </>
   );
 }
