@@ -5,13 +5,13 @@ import Artists from "./components/Artists";
 import Banner from "./components/Banner";
 import Profile from "./components/Profile";
 
+
 function App() {
   const [token, setToken] = useState("");
   const [topArtists, setTopArtists] = useState([]);
 
   useEffect(() => {
     const hash = window.location.hash;
-
     let token = window.localStorage.getItem("token");
 
     if (!token && hash) {
@@ -25,8 +25,8 @@ function App() {
     }
 
     setToken(token);
-    console.log(token);
-  }, []);
+   
+  }, [5000]);
 
   const logout = () => {
     if (token) {
@@ -35,7 +35,7 @@ function App() {
     window.localStorage.removeItem("token");
     window.location.hash = "";
     setTopArtists([]);
-    console.log(token);
+   
   };
 
   return (
@@ -63,12 +63,17 @@ function App() {
       </header>
       <div className="bg-navyBlue">
         <Banner />
-        {token ? (
+        {token ? (<>
           <Artists
             topArtists={topArtists}
             setTopArtists={setTopArtists}
             token={token}
           />
+          {/* <RecentlyPlayed token={token}/> */}
+
+
+        </>
+        
         ) : (
           <h1 className="text-white font-montserrat flex flex-start m-10">
             {" "}

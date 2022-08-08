@@ -4,8 +4,9 @@ import { useSpring, animated } from "react-spring";
 import { BsHandThumbsDown, BsHandThumbsUp } from "react-icons/bs";
 import AudioPlayer from "../AudioPlayer";
 
-
 function Artists({ topArtists, setTopArtists, token }) {
+ 
+  
   const props = useSpring({
     to: { opacity: 1, x: 0 },
     from: { opacity: 0, x: 20000 },
@@ -20,30 +21,27 @@ function Artists({ topArtists, setTopArtists, token }) {
 
   useEffect(() => {
     const myArtists = async () => {
-      console.log(token)
+  
       const { data } = await axios.get(
         "https://api.spotify.com/v1/me/top/tracks",
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            Accept: "application/json",
+            "Content-Type": "application/json",
           },
         }
       );
       setTopArtists(data.items);
-      console.log(data)
-    
+
+      console.log(data);
     };
-   
+
     myArtists();
   }, []);
 
-
-
-
   return (
     <>
-   
-    
       {topArtists.length > 0 ? (
         <>
           <animated.h1
@@ -69,8 +67,7 @@ function Artists({ topArtists, setTopArtists, token }) {
                 ) : (
                   <div>No Image</div>
                 )}
-                <AudioPlayer preview={track.preview_url}/>
-
+                <AudioPlayer preview={track.preview_url} />
 
                 <h1 className="font-montserrat font-bold text-white uppercase text-2xl pt-2">
                   {index + 1 + ". " + track.name}
@@ -93,21 +90,19 @@ function Artists({ topArtists, setTopArtists, token }) {
                     </span>
 
                     <BsHandThumbsDown color="red" size={20} />
-
-                    
                   </div>
                 )}
-
-                
 
                 {/* <span className="font-bold text-white uppercase">{track.name}</span> */}
               </animated.div>
             ))}
           </div>
         </>
-      ):<h1 className="text-white font-montserrat flex flex-start m-10">
-        Sorry, you are not authorized to access this application
-      </h1>}
+      ) : (
+        <h1 className="text-white font-montserrat flex flex-start m-10">
+          Sorry, you dont have any top tracks.
+        </h1>
+      )}
     </>
   );
 }
