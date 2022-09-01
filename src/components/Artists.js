@@ -6,7 +6,6 @@ import AudioPlayer from "../AudioPlayer";
 
 function Artists({ topArtists, setTopArtists, token }) {
  
-  
   const props = useSpring({
     to: { opacity: 1, x: 0 },
     from: { opacity: 0, x: 20000 },
