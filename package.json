@@ -2,7 +2,7 @@
   "name": "top-three-sp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jmrc1995.github.io/goodsoup",
+  "homepage": "http://jmrc1995.github.io/goodsoup",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
