@@ -1,15 +1,12 @@
 ## Overview
 
-### Frontend Mentor - Room homepeage 
+### Good Soup
 
 Users should be able to:
 - Grant a user access to Spotify data and features.
 - View the optimal layout for the site depending on their device's screen size.
 - View top 20 most played tracks.
 
-### Screenshot
-
-![](./src/images/desktop-image-hero-1.jpg)
 
 ### Links
 
