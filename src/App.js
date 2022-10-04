@@ -15,21 +15,16 @@ function App() {
 
   useEffect(() => {
     const _spotifyToken = getTokenFromUrl().access_token;
-
     window.location.hash = "";
-
     if(_spotifyToken){
       setSpotifyToken(_spotifyToken)
-
       spotify.setAccessToken(_spotifyToken)
-
     }
   });
 
   const logout = () => {
     if (spotifyToken) {
-      setSpotifyToken("");
-    }
+      setSpotifyToken("");}
     window.localStorage.removeItem("token");
     window.location.hash = "";
     setTopArtists([]);

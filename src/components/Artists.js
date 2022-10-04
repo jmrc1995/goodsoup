@@ -22,8 +22,7 @@ function Artists({ topArtists, setTopArtists, token }) {
     const myArtists = async () => {
   
       const { data } = await axios.get(
-        "https://api.spotify.com/v1/me/top/tracks",
-        {
+        "https://api.spotify.com/v1/me/top/tracks",{
           headers: {
             Authorization: `Bearer ${token}`,
             Accept: "application/json",
