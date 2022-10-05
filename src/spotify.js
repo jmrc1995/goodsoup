@@ -1,5 +1,5 @@
 const CLIENT_ID = "800d269073764880a14d2efe37ffa2b4";
-const REDIRECT_URI = "http://localhost:3000"; //The Redirect URI you want to add would be the URI you want to go to after the user has signed in.
+const REDIRECT_URI = "http://localhost:3000/"; //The Redirect URI you want to add would be the URI you want to go to after the user has signed in.
 const AUTH_ENDPOINT = "http://accounts.spotify.com/authorize";
 const RESPONSE_TYPE = "token";
 
