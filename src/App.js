@@ -1,10 +1,9 @@
 import "./App.css";
-import { loginUrl } from "./spotify";
 import { useEffect, useState } from "react";
 import Artists from "./components/Artists";
 import Banner from "./components/Banner";
 import Profile from "./components/Profile";
-import { getTokenFromUrl } from "./spotify";
+import { getTokenFromUrl, loginUrl } from "./spotify";
 import SpotifyWebApi from "spotify-web-api-js";
 
 const spotify = new SpotifyWebApi();
@@ -14,18 +13,27 @@ function App() {
   const [spotifyToken, setSpotifyToken] = useState("");
 
   useEffect(() => {
+    /* It will save the token to localStorage so that user won't have to sign in
+     * again when he/she refresh the page */
+    const localToken = localStorage.getItem("spotify-token");
+    if (localToken) {
+      setSpotifyToken(localToken);
+      spotify.setAccessToken(localToken);
+      window.location.hash = "";
+      return;
+    }
+
     const _spotifyToken = getTokenFromUrl().access_token;
-    window.location.hash = "";
-    if(_spotifyToken){
-      setSpotifyToken(_spotifyToken)
-      spotify.setAccessToken(_spotifyToken)
+    if (_spotifyToken) {
+      localStorage.setItem("spotify-token", _spotifyToken);
+      setSpotifyToken(_spotifyToken);
+      spotify.setAccessToken(_spotifyToken);
     }
   });
 
   const logout = () => {
-    if (spotifyToken) {
-      setSpotifyToken("");}
-    window.localStorage.removeItem("token");
+    setSpotifyToken("");
+    localStorage.removeItem("spotify-token");
     window.location.hash = "";
     setTopArtists([]);
   };
