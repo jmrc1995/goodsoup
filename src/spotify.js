@@ -1,10 +1,9 @@
-// const CLIENT_ID = "800d269073764880a14d2efe37ffa2b4";
-const CLIENT_ID = "e54e13f5953d4e5eb32836c75357cebb"; // its j471n's client ID
+const CLIENT_ID = "800d269073764880a14d2efe37ffa2b4";
 //The Redirect URI you want to add would be the URI you want to go to after the user has signed in.
 const REDIRECT_URI =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000/"
-    : window.location.origin;
+    : "https://jmrc1995.github.io/goodsoup/;    // This URI will work for production (same as spotify dashboard)
 const AUTH_ENDPOINT = "http://accounts.spotify.com/authorize";
 const RESPONSE_TYPE = "token";
 
