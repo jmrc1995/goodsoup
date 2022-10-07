@@ -98,7 +98,9 @@ function Artists({ topArtists, setTopArtists, token }) {
         </>
       ) : (
         <h1 className="text-white font-montserrat flex flex-start m-10">
-          Sorry, you dont have any top tracks.
+          You do not have access to this application. <br/>
+          Please email jomar.cardoza95@gmail.com to be given access.<br />
+          Thank you !
         </h1>
       )}
     </>
