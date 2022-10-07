@@ -8,7 +8,6 @@ const REDIRECT_URI =
 =======
     : "https://jmrc1995.github.io/goodsoup/";   
 // This URI will work for production (same as spotify dashboard)
->>>>>>> 7777f0cb4a0a8e78e3e40051a45d329708c75fc3
 const AUTH_ENDPOINT = "http://accounts.spotify.com/authorize";
 const RESPONSE_TYPE = "token";
 
