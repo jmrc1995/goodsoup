@@ -3,9 +3,6 @@ const CLIENT_ID = "800d269073764880a14d2efe37ffa2b4";
 const REDIRECT_URI =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000/"
-<<<<<<< HEAD
-    : "https://jmrc1995.github.io/goodsoup/";    // This URI will work for production (same as spotify dashboard)
-=======
     : "https://jmrc1995.github.io/goodsoup/";   
 // This URI will work for production (same as spotify dashboard)
 const AUTH_ENDPOINT = "http://accounts.spotify.com/authorize";
